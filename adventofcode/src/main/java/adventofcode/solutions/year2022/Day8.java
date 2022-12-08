@@ -51,16 +51,17 @@ public class Day8 extends AbstractSolution<List<Integer>> {
 		}
 		return visibleLeft(x, y, height) || visibleRight(x, y, height) || visibleUp(x, y, height)
 				|| visibleDown(x, y, height);
+//		return scenicLeft(x, y, height) < x || scenicRight(x, y, height) > input.get(y).size() - x - 1
+//				|| scenicUp(x, y, height) < y || scenicDown(x, y, height) > input.size() - y - 1;
 	}
 
 	public int scenic(int x, int y, int height) {
 		if (x == 0 || y == 0 || x == input.get(y).size() - 1 || y == input.size() - 1) {
 			return 0;
 		}
-		return scenicLeft(x, y, height) * scenicRight(x, y, height) * scenicUp(x, y, height)
-				* scenicDown(x, y, height);
+		return scenicLeft(x, y, height) * scenicRight(x, y, height) * scenicUp(x, y, height) * scenicDown(x, y, height);
 	}
-	
+
 	public boolean visibleLeft(int x, int y, int height) {
 		for (int i = x - 1; i >= 0; i--) {
 			if (input.get(y).get(i) >= height) {
@@ -71,17 +72,14 @@ public class Day8 extends AbstractSolution<List<Integer>> {
 	}
 
 	public int scenicLeft(int x, int y, int height) {
-		int scenic = 0;
 		for (int i = x - 1; i >= 0; i--) {
-			if (input.get(y).get(i) < height) {
-				scenic++;
-			} else {
-				return ++scenic;
+			if (input.get(y).get(i) >= height) {
+				return x - i;
 			}
 		}
-		return scenic;
+		return x;
 	}
-	
+
 	public boolean visibleRight(int x, int y, int height) {
 		for (int i = x + 1; i < input.get(y).size(); i++) {
 			if (input.get(y).get(i) >= height) {
@@ -92,17 +90,14 @@ public class Day8 extends AbstractSolution<List<Integer>> {
 	}
 
 	public int scenicRight(int x, int y, int height) {
-		int scenic = 0;
 		for (int i = x + 1; i < input.get(y).size(); i++) {
-			if (input.get(y).get(i) < height) {
-				scenic++;
-			} else {
-				return ++scenic;
+			if (input.get(y).get(i) >= height) {
+				return i - x;
 			}
 		}
-		return scenic;
+		return input.get(y).size() - x - 1;
 	}
-	
+
 	public boolean visibleUp(int x, int y, int height) {
 		for (int i = y - 1; i >= 0; i--) {
 			if (input.get(i).get(x) >= height) {
@@ -113,17 +108,14 @@ public class Day8 extends AbstractSolution<List<Integer>> {
 	}
 
 	public int scenicUp(int x, int y, int height) {
-		int scenic = 0;
 		for (int i = y - 1; i >= 0; i--) {
-			if (input.get(i).get(x) < height) {
-				scenic++;
-			} else {
-				return ++scenic;
+			if (input.get(i).get(x) >= height) {
+				return y - i;
 			}
 		}
-		return scenic;
+		return y;
 	}
-	
+
 	public boolean visibleDown(int x, int y, int height) {
 		for (int i = y + 1; i < input.size(); i++) {
 			if (input.get(i).get(x) >= height) {
@@ -132,17 +124,14 @@ public class Day8 extends AbstractSolution<List<Integer>> {
 		}
 		return true;
 	}
-	
+
 	public int scenicDown(int x, int y, int height) {
-		int scenic = 0;
 		for (int i = y + 1; i < input.size(); i++) {
-			if (input.get(i).get(x) < height) {
-				scenic++;
-			} else {
-				return ++scenic;
+			if (input.get(i).get(x) >= height) {
+				return i - y;
 			}
 		}
-		return scenic;
+		return input.size() - y - 1;
 	}
 
 	@Test
