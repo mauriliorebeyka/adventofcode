@@ -7,12 +7,16 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.util.StopWatch;
 
 import adventofcode.web.dto.SolutionDTO;
 
 public class SolutionExecutorProcessor implements Callable<SolutionDTO> {
 
+	private static final Logger LOG = LogManager.getLogger();
+	
 	private AbstractSolution<?> solution;
 
 	private boolean processB;
@@ -48,8 +52,10 @@ public class SolutionExecutorProcessor implements Callable<SolutionDTO> {
 			sol = a.get(10, TimeUnit.SECONDS);
 		} catch (InterruptedException | ExecutionException e) {
 			sol.setSolutionA("Error:" + e);
+			LOG.warn("Error processing Solution",e);
 		} catch (TimeoutException e) {
 			sol.setSolutionA("TIMEOUT");
+			LOG.warn("Timed out when processing solution");
 		}
 		return sol;
 	}
