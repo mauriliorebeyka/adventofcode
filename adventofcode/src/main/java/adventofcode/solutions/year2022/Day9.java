@@ -23,7 +23,7 @@ public class Day9 extends AbstractSolution<Instruction> {
 			previousTails.addAll(move(head, tail, i));
 //			System.out.println("H: (" + head.x + " " + head.y + ") T: (" + tail.x + " " + tail.y + ") " + i
 //					+ previousTails.size());
-			debug(previousTails, head, tail);
+//			debug(previousTails, head, tail);
 		}
 
 		return Integer.toString(previousTails.size());
@@ -81,7 +81,7 @@ public class Day9 extends AbstractSolution<Instruction> {
 				tail.move(head.x - 1, head.y);
 				tailPositions.add(new Point(tail));
 			}
-			debug(tailPositions, head, tail);
+//			debug(tailPositions, head, tail);
 		}
 		return tailPositions;
 	}
@@ -89,12 +89,12 @@ public class Day9 extends AbstractSolution<Instruction> {
 	public Set<Point> moveLeft(Point head, Point tail, int amount) {
 		Set<Point> tailPositions = new HashSet<>();
 		for (int i = 0; i < amount; i++) {
-			head.translate(head.x > 0 ? -1 : 0, 0);
+			head.translate(-1, 0);
 			if (head.distance(tail) > 1.5) {
 				tail.move(head.x + 1, head.y);
 				tailPositions.add(new Point(tail));
 			}
-			debug(tailPositions, head, tail);
+//			debug(tailPositions, head, tail);
 		}
 		return tailPositions;
 	}
@@ -107,7 +107,7 @@ public class Day9 extends AbstractSolution<Instruction> {
 				tail.move(head.x, head.y - 1);
 				tailPositions.add(new Point(tail));
 			}
-			debug(tailPositions, head, tail);
+//			debug(tailPositions, head, tail);
 		}
 		return tailPositions;
 	}
@@ -115,12 +115,12 @@ public class Day9 extends AbstractSolution<Instruction> {
 	public Set<Point> moveDown(Point head, Point tail, int amount) {
 		Set<Point> tailPositions = new HashSet<>();
 		for (int i = 0; i < amount; i++) {
-			head.translate(0, head.y > 0 ? -1 : 0);
+			head.translate(0, -1);
 			if (head.distance(tail) > 1.5) {
 				tail.move(head.x, head.y + 1);
 				tailPositions.add(new Point(tail));
 			}
-			debug(tailPositions, head, tail);
+//			debug(tailPositions, head, tail);
 		}
 		return tailPositions;
 	}
