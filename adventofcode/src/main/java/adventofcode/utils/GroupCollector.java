@@ -3,6 +3,7 @@ package adventofcode.utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Stack;
 import java.util.function.BiConsumer;
@@ -15,6 +16,14 @@ import java.util.stream.Collectors;
 
 public class GroupCollector<T, R> implements Collector<T, Stack<List<T>>, List<R>> {
 
+	public static <T> GroupCollector<T, List<T>> asLists(Predicate<T> predicate) {
+		return new GroupCollector<T, List<T>>(predicate, i -> i);
+	}
+	
+	public static <T> GroupCollector<T, List<T>> asLists() {
+		return new GroupCollector<T, List<T>>(Objects::isNull, i -> i);
+	}
+	
 	private Predicate<T> predicate;
 	
 	private Function<List<T>, R> transform;
