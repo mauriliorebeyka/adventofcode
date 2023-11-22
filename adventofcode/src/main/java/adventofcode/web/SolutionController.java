@@ -45,7 +45,7 @@ public class SolutionController {
 	
 	private SolutionDTO toSolutionDto(AbstractSolution<?> solution, boolean execute) {
 		SolutionDTOBuilder builder = SolutionDTO.builder().name(solution.getClass().getName()).year(solution.getYear())
-				.day(solution.getDay()).href("/solution?year=2022&day=5");
+				.day(solution.getDay()).href("/solution?year=%s&day=%s".formatted(solution.getYear(),solution.getDay()));
 		if (execute) {
 		SolutionExecutorProcessor executor = new SolutionExecutorProcessor(solution);
 		SolutionDTO solutionDTO = executor.processBothSolutions();
