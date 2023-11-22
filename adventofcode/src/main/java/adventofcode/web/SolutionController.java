@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import adventofcode.exceptions.InputParseException;
 import adventofcode.utils.AbstractSolution;
 import adventofcode.utils.InputReader;
 import adventofcode.utils.SolutionExecutorProcessor;
@@ -29,7 +30,11 @@ public class SolutionController {
 	public SolutionDTO solution(@RequestParam(value = "year", defaultValue = "0") int year,
 			@RequestParam(value = "day", defaultValue = "0") int day) {
 		AbstractSolution<?> solution = solutionFactory.getSolution(year, day);
-		solution.init(inputReader);
+		try {
+			solution.init(inputReader);
+		} catch (InputParseException e) {
+			return SolutionDTO.builder().name(e.getMessage()).build();
+		}
 		if (!Objects.isNull(solution)) {
 			return toSolutionDto(solution, true);
 		} else {

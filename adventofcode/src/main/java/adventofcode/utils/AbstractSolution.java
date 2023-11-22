@@ -7,6 +7,8 @@ import java.util.stream.Stream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import adventofcode.exceptions.InputParseException;
+
 public abstract class AbstractSolution<T> {
 
 	private static final Logger LOG = LogManager.getLogger(AbstractSolution.class);
@@ -22,7 +24,7 @@ public abstract class AbstractSolution<T> {
 		day = this.getClass().getAnnotation(SolutionDetails.class).day();
 	}
 	
-	public void init(InputReader inputReader) {
+	public void init(InputReader inputReader) throws InputParseException {
 		LOG.debug("Reading input for year {}, day {}", year, day);
 		input = inputReader.readMultipleLines(year, day).stream().map(this::parse).collect(Collectors.toList());
 	}

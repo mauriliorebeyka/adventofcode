@@ -17,6 +17,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import adventofcode.exceptions.InputParseException;
+
 @Service
 public class InputReader {
 
@@ -32,7 +34,7 @@ public class InputReader {
 	
 	private static final Logger LOG = LogManager.getLogger(InputReader.class);
 
-	public List<String> readMultipleLines(int year, int day) {
+	public List<String> readMultipleLines(int year, int day) throws InputParseException {
 		this.year = year;
 		this.day = day;
 		LOG.debug("Reading input...");
@@ -64,13 +66,12 @@ public class InputReader {
 			lines = reader.lines().collect(Collectors.toList());
 			LOG.debug("Successfully read {} lines from file {}", lines.size(), file.getPath());
 		} catch (IOException e) {
-			LOG.debug("Error reading from file, so returning empty list");
-			return lines;
+			LOG.debug("Error reading from file");
 		}
 		return lines;
 	}
 
-	private List<String> readFromWeb() {
+	private List<String> readFromWeb() throws InputParseException {
 		String endpoint = "https://adventofcode.com/" + year + "/day/" + day + "/input";
 		LOG.debug("Reading input from web: {}",endpoint);
 		try (CloseableHttpClient httpclient = inputReaderHttpClientFactory.getHttpClient()) {
@@ -81,8 +82,8 @@ public class InputReader {
 			return Arrays.asList(response.split("\n"));
 		} catch (IOException e) {
 			LOG.error("Error reading from web: {}", e.getMessage().replace("\n", ""));
+			throw new InputParseException("Error reading from web", e);
 		}
-		return Collections.emptyList();
 	}
 
 	private File getFile() {
