@@ -1,10 +1,10 @@
 package adventofcode.solutions.year2020;
 
-import adventofcode.utils.AbstractSolution;
-import adventofcode.utils.SolutionDetails;
+import adventofcode.utils.AbstractChallenge;
+import adventofcode.utils.ChallengeDetails;
 
-@SolutionDetails(year = 2020, day = 1)
-public class Year2020Day1 extends AbstractSolution<String> {
+@ChallengeDetails(year = 2020, day = 1)
+public class Year2020Day1 extends AbstractChallenge<String> {
 	
 	@Override
 	public String processA() {

@@ -1,17 +1,18 @@
 package adventofcode.solutions.year2022;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import adventofcode.utils.AbstractSolution;
+import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.GroupCollector;
-import adventofcode.utils.SolutionDetails;
+import adventofcode.utils.ChallengeDetails;
 
-@SolutionDetails(year = 2022, day = 3)
-public class Day3 extends AbstractSolution<String> {
+@ChallengeDetails(year = 2022, day = 3)
+public class Day3 extends AbstractChallenge<String> {
 
 	@Override
 	public String processA() {
@@ -20,7 +21,7 @@ public class Day3 extends AbstractSolution<String> {
 
 	@Override
 	public String processB() {
-		List<List<String>> groups = input.stream().collect(new GroupCollector<String, List<String>>(3, r -> r));
+		List<List<String>> groups = input.stream().collect(new GroupCollector<String, List<String>>(3, ArrayList::new));
 		return Integer.toString(groups.stream().mapToInt(this::getBadge).sum());
 	}
 

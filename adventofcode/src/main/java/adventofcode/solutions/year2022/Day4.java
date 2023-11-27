@@ -7,11 +7,11 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 import adventofcode.solutions.year2022.Day4.Section;
-import adventofcode.utils.AbstractSolution;
-import adventofcode.utils.SolutionDetails;
+import adventofcode.utils.AbstractChallenge;
+import adventofcode.utils.ChallengeDetails;
 
-@SolutionDetails(year = 2022, day = 4)
-public class Day4 extends AbstractSolution<List<Section>> {
+@ChallengeDetails(year = 2022, day = 4)
+public class Day4 extends AbstractChallenge<List<Section>> {
 
 	@Override
 	public String processA() {

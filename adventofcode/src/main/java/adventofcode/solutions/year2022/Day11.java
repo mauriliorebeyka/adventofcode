@@ -14,11 +14,11 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import adventofcode.utils.AbstractSolution;
-import adventofcode.utils.SolutionDetails;
+import adventofcode.utils.AbstractChallenge;
+import adventofcode.utils.ChallengeDetails;
 
-@SolutionDetails(year = 2022, day = 11)
-public class Day11 extends AbstractSolution<String> {
+@ChallengeDetails(year = 2022, day = 11)
+public class Day11 extends AbstractChallenge<String> {
 
 	public Day11() {
 		super();

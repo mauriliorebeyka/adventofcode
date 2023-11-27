@@ -8,18 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SolutionLocalRunner {
+public class ChallengeLocalRunner {
 
-	private static final Logger LOG = LogManager.getLogger(SolutionLocalRunner.class);
+	private static final Logger LOG = LogManager.getLogger(ChallengeLocalRunner.class);
 
 	@Autowired
-	private SolutionFactory solutionFactory;
+	private ChallengeFactory solutionFactory;
 	
 	@Autowired
 	private InputReader inputReader;
 	
 	public String runSolution(int year, int day) throws Exception {
-		AbstractSolution<?> solution = null;
+		AbstractChallenge<?> solution = null;
 		if (year == 0 && day == 0) {
 			LOG.info("Running latest solution available");
 			solution = solutionFactory.getLatestSolution();

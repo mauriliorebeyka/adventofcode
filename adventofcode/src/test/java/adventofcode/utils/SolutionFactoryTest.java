@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SolutionFactoryTest {
 
 	@Autowired
-	private SolutionFactory solutionFactory;
+	private ChallengeFactory solutionFactory;
 	
 	@Test
 	public void test() {

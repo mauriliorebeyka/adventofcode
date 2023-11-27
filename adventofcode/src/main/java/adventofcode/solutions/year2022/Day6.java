@@ -4,11 +4,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.stream.Collectors;
 
-import adventofcode.utils.AbstractSolution;
-import adventofcode.utils.SolutionDetails;
+import adventofcode.utils.AbstractChallenge;
+import adventofcode.utils.ChallengeDetails;
 
-@SolutionDetails(year = 2022, day = 6)
-public class Day6 extends AbstractSolution<String> {
+@ChallengeDetails(year = 2022, day = 6)
+public class Day6 extends AbstractChallenge<String> {
 
 	@Override
 	public String processA() {

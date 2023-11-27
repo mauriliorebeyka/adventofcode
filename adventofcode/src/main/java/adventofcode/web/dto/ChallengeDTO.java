@@ -1,5 +1,7 @@
 package adventofcode.web.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,14 +11,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SolutionDTO {
+public class ChallengeDTO {
 
 	private String name;
 	private int year;
 	private int day;
-	private long processingA;
-	private long processingB;
-	private String solutionA;
-	private String solutionB;
+	private List<ChallengeSolutionDTO> solutions;
 	private String href;
 }

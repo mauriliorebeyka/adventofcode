@@ -1,7 +1,9 @@
 package adventofcode.solutions.year2022;
 
-import static org.junit.Assert.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -11,22 +13,25 @@ import java.util.Stack;
 import java.util.stream.Collector;
 import java.util.stream.Collector.Characteristics;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import adventofcode.utils.AbstractSolution;
+import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
 import adventofcode.utils.GroupCollector;
-import adventofcode.utils.SolutionDetails;
+import adventofcode.utils.StringChallenge;
 
-@SolutionDetails(year = 2022, day = 1)
-public class Day1 extends AbstractSolution<String> {
+@ChallengeDetails(year = 2022, day = 1)
+public class Day1 extends StringChallenge {
 
 	@Override
+	@ChallengeSolution
 	public String processA() {
 		Set<Integer> calories = getCaloriesList();
 		return Integer.toString(calories.stream().mapToInt(i -> i).max().getAsInt());
 	}
 
 	@Override
+	@ChallengeSolution
 	public String processB() {
 		Set<Integer> calores = getCaloriesList();
 		int top3 = calores.stream().sorted(Comparator.reverseOrder()).limit(3).reduce(Integer::sum).get().intValue();
@@ -79,6 +84,6 @@ public class Day1 extends AbstractSolution<String> {
 
 		input.stream().collect(new GroupCollector<String, Integer>(r -> !r.isEmpty(),
 				r -> r.stream().mapToInt(Integer::parseInt).sum())).forEach(System.out::println);
-		input.stream().collect(new GroupCollector<String, List<String>>(r -> true, r -> r)).forEach(System.out::println);
+		input.stream().collect(new GroupCollector<String, List<String>>(r -> true, ArrayList::new)).forEach(System.out::println);
 	}
 }

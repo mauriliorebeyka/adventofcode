@@ -3,11 +3,11 @@ package adventofcode.solutions.year2022;
 import org.junit.Test;
 
 import adventofcode.solutions.year2022.Day10.Instruction;
-import adventofcode.utils.AbstractSolution;
-import adventofcode.utils.SolutionDetails;
+import adventofcode.utils.AbstractChallenge;
+import adventofcode.utils.ChallengeDetails;
 
-@SolutionDetails(year = 2022, day = 10)
-public class Day10 extends AbstractSolution<Instruction> {
+@ChallengeDetails(year = 2022, day = 10)
+public class Day10 extends AbstractChallenge<Instruction> {
 
 	@Override
 	public String processA() {

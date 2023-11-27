@@ -9,9 +9,9 @@ import org.apache.logging.log4j.Logger;
 
 import adventofcode.exceptions.InputParseException;
 
-public abstract class AbstractSolution<T> {
+public abstract class AbstractChallenge<T> {
 
-	private static final Logger LOG = LogManager.getLogger(AbstractSolution.class);
+	private static final Logger LOG = LogManager.getLogger(AbstractChallenge.class);
 
 	protected List<T> input;
 
@@ -19,9 +19,9 @@ public abstract class AbstractSolution<T> {
 
 	private int day;
 
-	public AbstractSolution() {
-		year = this.getClass().getAnnotation(SolutionDetails.class).year();
-		day = this.getClass().getAnnotation(SolutionDetails.class).day();
+	public AbstractChallenge() {
+		year = this.getClass().getAnnotation(ChallengeDetails.class).year();
+		day = this.getClass().getAnnotation(ChallengeDetails.class).day();
 	}
 	
 	public void init(InputReader inputReader) throws InputParseException {
@@ -29,8 +29,10 @@ public abstract class AbstractSolution<T> {
 		input = inputReader.readMultipleLines(year, day).stream().map(this::parse).collect(Collectors.toList());
 	}
 
+	@ChallengeSolution
 	public abstract String processA();
 
+	@ChallengeSolution
 	public abstract String processB();
 
 	@SuppressWarnings("unchecked")

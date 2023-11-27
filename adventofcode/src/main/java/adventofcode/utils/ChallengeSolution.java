@@ -6,11 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface SolutionDetails {
+@Target(ElementType.METHOD)
+public @interface ChallengeSolution {
 
-	int year();
-	
-	int day();
-	
 }
