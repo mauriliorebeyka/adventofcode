@@ -2,16 +2,14 @@ package adventofcode.solutions.year2022;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 13)
-public class Day13 extends AbstractChallenge<String> {
+public class Day13 extends StringChallenge {
 
 	@Override
 	public String processA() {

@@ -9,13 +9,15 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
+import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 5)
-public class Day5 extends AbstractChallenge<String> {
+public class Day5 extends StringChallenge {
 
 	@Override
+	@ChallengeSolution
 	public String processA() {
 		List<Deque<Character>> stacks = getStacks();
 		input.stream().filter(s -> s.startsWith("move")).forEach(s -> this.move(stacks, s, false));
@@ -23,6 +25,7 @@ public class Day5 extends AbstractChallenge<String> {
 	}
 
 	@Override
+	@ChallengeSolution
 	public String processB() {
 		List<Deque<Character>> stacks = getStacks();
 		input.stream().filter(s -> s.startsWith("move")).forEach(s -> this.move(stacks, s, true));

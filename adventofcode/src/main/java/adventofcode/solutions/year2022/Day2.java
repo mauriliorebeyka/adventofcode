@@ -1,17 +1,20 @@
 package adventofcode.solutions.year2022;
 
-import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
+import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 2)
-public class Day2 extends AbstractChallenge<String> {
+public class Day2 extends StringChallenge {
 
 	@Override
+	@ChallengeSolution
 	public String processA() {
 		return Integer.toString(input.stream().map(this::computeMatch).mapToInt(Integer::intValue).sum());
 	}
 
 	@Override
+	@ChallengeSolution
 	public String processB() {
 		return Integer.toString(input.stream().map(this::computeResult).mapToInt(Integer::intValue).sum());
 	}

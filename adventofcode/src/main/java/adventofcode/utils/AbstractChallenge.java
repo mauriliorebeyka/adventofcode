@@ -29,16 +29,11 @@ public abstract class AbstractChallenge<T> {
 		input = inputReader.readMultipleLines(year, day).stream().map(this::parse).collect(Collectors.toList());
 	}
 
-	@ChallengeSolution
 	public abstract String processA();
 
-	@ChallengeSolution
 	public abstract String processB();
 
-	@SuppressWarnings("unchecked")
-	public T parse(String entry) {
-		return (T) entry;
-	}
+	public abstract T parse(String entry);
 
 	public List<T> getInput() {
 		return input;

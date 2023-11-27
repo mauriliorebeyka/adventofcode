@@ -4,13 +4,15 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.stream.Collectors;
 
-import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
+import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 6)
-public class Day6 extends AbstractChallenge<String> {
+public class Day6 extends StringChallenge {
 
 	@Override
+	@ChallengeSolution
 	public String processA() {
 		char[] chars = input.get(0).toCharArray();
 		Deque<Character> queue = new ArrayDeque<>();
@@ -22,6 +24,7 @@ public class Day6 extends AbstractChallenge<String> {
 	}
 
 	@Override
+	@ChallengeSolution
 	public String processB() {
 		char[] chars = input.get(0).toCharArray();
 		Deque<Character> queue = new ArrayDeque<>();

@@ -14,15 +14,11 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 11)
-public class Day11 extends AbstractChallenge<String> {
-
-	public Day11() {
-		super();
-	}
+public class Day11 extends StringChallenge {
 
 	@Override
 	public String processA() {
