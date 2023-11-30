@@ -1,6 +1,5 @@
 package adventofcode.solutions.year2022;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -84,6 +83,7 @@ public class Day1 extends StringChallenge {
 
 		input.stream().collect(new GroupCollector<String, Integer>(r -> !r.isEmpty(),
 				r -> r.stream().mapToInt(Integer::parseInt).sum())).forEach(System.out::println);
-		input.stream().collect(new GroupCollector<String, List<String>>(r -> true, ArrayList::new)).forEach(System.out::println);
+		input.stream().collect(new GroupCollector<String, List<String>>(r -> true, ArrayList::new))
+				.forEach(System.out::println);
 	}
 }
