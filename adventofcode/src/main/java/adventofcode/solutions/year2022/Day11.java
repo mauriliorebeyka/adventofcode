@@ -15,12 +15,13 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
 import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 11)
 public class Day11 extends StringChallenge {
 
-	@Override
+	@ChallengeSolution
 	public String processA() {
 		List<Monkey> game = getInitialMonkeys();
 		int turns = 20;
@@ -39,7 +40,7 @@ public class Day11 extends StringChallenge {
 				.mapToInt(i -> i).limit(2).reduce(Math::multiplyExact).getAsInt());
 	}
 
-	@Override
+	@ChallengeSolution
 	public String processB() {
 		List<Monkey> game = getInitialMonkeys();
 		int turns = 10000;
@@ -177,7 +178,7 @@ public class Day11 extends StringChallenge {
 				    If true: throw to monkey 0
 				    If false: throw to monkey 1
 								""";
-		setInput(raw);
+		setTestInput(raw);
 //		System.out.println(getInitialMonkeys().get(0).test.test(new BigInteger("46")));
 		System.out.println(processA());
 		System.out.println(processB());

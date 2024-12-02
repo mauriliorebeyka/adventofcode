@@ -11,7 +11,6 @@ import adventofcode.utils.StringChallenge;
 @ChallengeDetails(year = 2022, day = 6)
 public class Day6 extends StringChallenge {
 
-	@Override
 	@ChallengeSolution
 	public String processA() {
 		char[] chars = input.get(0).toCharArray();
@@ -23,7 +22,6 @@ public class Day6 extends StringChallenge {
 		return Integer.toString(i);
 	}
 
-	@Override
 	@ChallengeSolution
 	public String processB() {
 		char[] chars = input.get(0).toCharArray();

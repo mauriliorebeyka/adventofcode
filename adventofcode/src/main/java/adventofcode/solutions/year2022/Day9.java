@@ -9,11 +9,12 @@ import org.junit.Test;
 import adventofcode.solutions.year2022.Day9.Instruction;
 import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 9)
 public class Day9 extends AbstractChallenge<Instruction> {
 
-	@Override
+	@ChallengeSolution
 	public String processA() {
 		Point head = new Point(0, 0);
 		Point tail = new Point(0, 0);
@@ -29,7 +30,7 @@ public class Day9 extends AbstractChallenge<Instruction> {
 		return Integer.toString(previousTails.size());
 	}
 
-	@Override
+	@ChallengeSolution
 	public String processB() {
 		// TODO Auto-generated method stub
 		return null;
@@ -162,7 +163,7 @@ public class Day9 extends AbstractChallenge<Instruction> {
 //L 4
 //R 5
 //								""";
-		setInput(raw);
+		setTestInput(raw);
 		System.out.println(processA());
 	}
 }

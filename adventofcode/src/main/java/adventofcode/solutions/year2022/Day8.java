@@ -8,11 +8,12 @@ import org.junit.Test;
 
 import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 8)
 public class Day8 extends AbstractChallenge<List<Integer>> {
 
-	@Override
+	@ChallengeSolution
 	public String processA() {
 		int visible = 0;
 		for (int y = 0; y < input.size(); y++) {
@@ -25,7 +26,7 @@ public class Day8 extends AbstractChallenge<List<Integer>> {
 		return Integer.toString(visible);
 	}
 
-	@Override
+	@ChallengeSolution
 	public String processB() {
 		int scenic = 0;
 		for (int y = 0; y < input.size(); y++) {

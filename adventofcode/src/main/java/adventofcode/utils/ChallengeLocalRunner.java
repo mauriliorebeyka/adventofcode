@@ -28,14 +28,15 @@ public class ChallengeLocalRunner {
 			solution = solutionFactory.getSolution(year, day);
 		}
 		solution.init(inputReader);
-		if (solution.getInput() == null || solution.getInput().isEmpty()) {
-			throw new Exception("Invalid input");
-		}
-		String output = solution.processB();
-		if (Objects.isNull(output)) {
-			LOG.info("Process B not yet implemented, running Process A");
-			output = solution.processA();
-		}
-		return output;
+//		if (solution.getInput() == null || solution.getInput().isEmpty()) {
+//			throw new Exception("Invalid input");
+//		}
+//		String output = solution.processB();
+//		if (Objects.isNull(output)) {
+//			LOG.info("Process B not yet implemented, running Process A");
+//			output = solution.processA();
+//		}
+//		return output;
+		return "";
 	}
 }

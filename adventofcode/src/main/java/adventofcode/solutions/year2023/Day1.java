@@ -17,13 +17,11 @@ import adventofcode.utils.StringChallenge;
 @ChallengeDetails(year = 2023, day = 1)
 public class Day1 extends StringChallenge {
 
-	@Override
 	@ChallengeSolution
 	public String processA() {
 		return Integer.toString(input.stream().mapToInt(this::getCalibration).sum());
 	}
 
-	@Override
 	@ChallengeSolution
 	public String processB() {
 		return Integer.toString(input.stream().mapToInt(this::getRealCalibration).sum());
@@ -83,7 +81,7 @@ public class Day1 extends StringChallenge {
 
 	@Test
 	public void test() {
-		this.setInput("""
+		this.setTestInput("""
 two1nine
 eightwothree
 abcone2threexyz

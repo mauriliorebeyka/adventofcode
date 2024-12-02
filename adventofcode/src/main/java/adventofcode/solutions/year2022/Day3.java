@@ -15,13 +15,11 @@ import adventofcode.utils.StringChallenge;
 @ChallengeDetails(year = 2022, day = 3)
 public class Day3 extends StringChallenge {
 
-	@Override
 	@ChallengeSolution
 	public String processA() {
 		return Integer.toString(input.stream().mapToInt(this::getPriority).sum());
 	}
 
-	@Override
 	@ChallengeSolution
 	public String processB() {
 		List<List<String>> groups = input.stream().collect(new GroupCollector<String, List<String>>(3, ArrayList::new));

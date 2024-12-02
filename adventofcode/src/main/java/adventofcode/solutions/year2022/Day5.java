@@ -16,7 +16,6 @@ import adventofcode.utils.StringChallenge;
 @ChallengeDetails(year = 2022, day = 5)
 public class Day5 extends StringChallenge {
 
-	@Override
 	@ChallengeSolution
 	public String processA() {
 		List<Deque<Character>> stacks = getStacks();
@@ -24,7 +23,6 @@ public class Day5 extends StringChallenge {
 		return stacks.stream().map(s -> Character.toString(s.peekLast())).reduce("", String::concat);
 	}
 
-	@Override
 	@ChallengeSolution
 	public String processB() {
 		List<Deque<Character>> stacks = getStacks();

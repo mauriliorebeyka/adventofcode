@@ -15,6 +15,8 @@ public abstract class AbstractChallenge<T> {
 
 	protected List<T> input;
 
+	protected List<T> testInput;
+	
 	private int year;
 
 	private int day;
@@ -29,18 +31,14 @@ public abstract class AbstractChallenge<T> {
 		input = inputReader.readMultipleLines(year, day).stream().map(this::parse).collect(Collectors.toList());
 	}
 
-	public abstract String processA();
-
-	public abstract String processB();
-
 	public abstract T parse(String entry);
 
 	public List<T> getInput() {
 		return input;
 	}
 
-	public void setInput(String input) {
-		this.input = Stream.of(input.split("\n")).map(this::parse).collect(Collectors.toList());
+	public void setTestInput(String input) {
+		this.testInput = Stream.of(input.split("\n")).map(this::parse).collect(Collectors.toList());
 	}
 	
 	public final int getYear() {

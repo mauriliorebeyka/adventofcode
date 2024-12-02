@@ -5,11 +5,12 @@ import org.junit.Test;
 import adventofcode.solutions.year2022.Day10.Instruction;
 import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 10)
 public class Day10 extends AbstractChallenge<Instruction> {
 
-	@Override
+	@ChallengeSolution
 	public String processA() {
 		int x = 1;
 		int tickCount = 1;
@@ -23,8 +24,8 @@ public class Day10 extends AbstractChallenge<Instruction> {
 		}
 		return Integer.toString(sum);
 	}
-	
-	@Override
+
+	@ChallengeSolution
 	public String processB() {
 		int x = 1;
 		int tickCount = 0;
@@ -225,7 +226,7 @@ noop
 noop
 noop
 				""";
-		setInput(raw);
+		setTestInput(raw);
 		System.out.println(processB());
 	}
 }

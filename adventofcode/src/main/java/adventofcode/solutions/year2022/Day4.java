@@ -9,16 +9,17 @@ import org.junit.Test;
 import adventofcode.solutions.year2022.Day4.Section;
 import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 4)
 public class Day4 extends AbstractChallenge<List<Section>> {
 
-	@Override
+	@ChallengeSolution
 	public String processA() {
 		return Long.toString(input.stream().filter(s -> s.get(0).inside(s.get(1))).count());
 	}
 
-	@Override
+	@ChallengeSolution
 	public String processB() {
 		return Long.toString(input.stream().filter(s -> s.get(0).overlap(s.get(1))).count());
 	}

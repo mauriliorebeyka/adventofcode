@@ -22,14 +22,12 @@ import adventofcode.utils.StringChallenge;
 @ChallengeDetails(year = 2022, day = 1)
 public class Day1 extends StringChallenge {
 
-	@Override
 	@ChallengeSolution
 	public String processA() {
 		Set<Integer> calories = getCaloriesList();
 		return Integer.toString(calories.stream().mapToInt(i -> i).max().getAsInt());
 	}
 
-	@Override
 	@ChallengeSolution
 	public String processB() {
 		Set<Integer> calores = getCaloriesList();

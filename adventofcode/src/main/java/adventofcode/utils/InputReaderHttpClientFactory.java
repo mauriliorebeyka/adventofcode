@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class InputReaderHttpClientFactory {
 
-	private static String SESSION_COOKIE = "53616c7465645f5fd64f97bd2fca9a80bb2cbcba1e7c833763ec254ece5a1bd533514ab200c2a9eefb7e7abfebb63f7d6bac3e8d216570b0fdebbfe2c60f4bd9";
+	private static String SESSION_COOKIE = "53616c7465645f5f52251f47df601a63e42221b5d7372352b51b6be625358e2f7e2b40b9cac8f550a3f757969ed2a4478971cdca561d9dfaf09898e8ddd15fa5";
 	
 	public CloseableHttpClient getHttpClient() {
 		CookieStore cookieStore = new BasicCookieStore();

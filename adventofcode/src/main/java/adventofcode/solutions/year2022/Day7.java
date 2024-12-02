@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import adventofcode.utils.AbstractChallenge;
 import adventofcode.utils.ChallengeDetails;
+import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 7)
 public class Day7 extends AbstractChallenge<String> {
@@ -18,13 +19,13 @@ public class Day7 extends AbstractChallenge<String> {
 
 	private PseudoFile current = root;
 
-	@Override
+	@ChallengeSolution
 	public String processA() {
 		return Integer
 				.toString(findFoldersBySize(root, i -> i < 100000).stream().mapToInt(f -> f.getDiskSpace()).sum());
 	}
 
-	@Override
+	@ChallengeSolution
 	public String processB() {
 		int spaceToFree = 30000000 - (70000000 - root.getDiskSpace());
 		return Integer.toString(findFoldersBySize(root, i -> i > spaceToFree).stream().mapToInt(i -> i.getDiskSpace())

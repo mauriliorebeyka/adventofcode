@@ -12,17 +12,14 @@ import adventofcode.utils.ChallengeSolution;
 @ChallengeDetails(year = 2023, day = 2)
 public class Day2 extends AbstractChallenge<Day2.Game> {
 
-	@Override
 	@ChallengeSolution
-	public String processA() {
-		return Integer.toString(
-				getInput().stream().filter(g -> !validGame(g.getRounds(), 12, 13, 14)).mapToInt(Game::getId).sum());
+	public int processA() {
+		return getInput().stream().filter(g -> !validGame(g.getRounds(), 12, 13, 14)).mapToInt(Game::getId).sum();
 	}
 
-	@Override
 	@ChallengeSolution
-	public String processB() {
-		return Long.toString(getInput().stream().mapToLong(this::gamePower).reduce(Math::addExact).getAsLong());
+	public long processB() {
+		return getInput().stream().mapToLong(this::gamePower).reduce(Math::addExact).getAsLong();
 	}
 
 	private boolean validGame(List<Round> rounds, int red, int green, int blue) {
@@ -33,12 +30,15 @@ public class Day2 extends AbstractChallenge<Day2.Game> {
 	}
 
 	public long gamePower(Game game) {
-		int red = game.getRounds().stream().filter(r -> r.getCube().equals("red")).mapToInt(r -> r.getAmount()).max().getAsInt();
-		int green = game.getRounds().stream().filter(r -> r.getCube().equals("green")).mapToInt(r -> r.getAmount()).max().getAsInt();
-		int blue = game.getRounds().stream().filter(r -> r.getCube().equals("blue")).mapToInt(r -> r.getAmount()).max().getAsInt();
+		int red = game.getRounds().stream().filter(r -> r.getCube().equals("red")).mapToInt(r -> r.getAmount()).max()
+				.getAsInt();
+		int green = game.getRounds().stream().filter(r -> r.getCube().equals("green")).mapToInt(r -> r.getAmount())
+				.max().getAsInt();
+		int blue = game.getRounds().stream().filter(r -> r.getCube().equals("blue")).mapToInt(r -> r.getAmount()).max()
+				.getAsInt();
 		return red * green * blue;
 	}
-	
+
 	@Override
 	public Game parse(String entry) {
 		String[] gameId = entry.split(":");
@@ -54,7 +54,7 @@ public class Day2 extends AbstractChallenge<Day2.Game> {
 
 	@Test
 	public void test() {
-		this.setInput("""
+		this.setTestInput("""
 				Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 				Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
 				Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red

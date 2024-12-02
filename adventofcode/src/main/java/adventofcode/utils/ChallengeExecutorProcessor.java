@@ -5,19 +5,14 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.scheduling.config.ExecutorBeanDefinitionParser;
 import org.springframework.util.StopWatch;
 
 import adventofcode.web.dto.ChallengeDTO;
@@ -65,7 +60,7 @@ public class ChallengeExecutorProcessor {
 			executor.awaitTermination(timeout, TimeUnit.MILLISECONDS);
 			return callables.stream().map(RunnableSolution::getChallengeSolutionDTO).collect(Collectors.toList());
 		} catch (InterruptedException e) {
-			LOG.info("Thread interruped: {}",callables);
+			LOG.info("Thread interruped: {}", callables);
 		}
 		return Collections.emptyList();
 	}
@@ -80,7 +75,7 @@ public class ChallengeExecutorProcessor {
 			try {
 				executor.awaitTermination(timeout, TimeUnit.MILLISECONDS);
 			} catch (InterruptedException e) {
-				LOG.info("Thread interruped: {}",callable);
+				LOG.info("Thread interruped: {}", callable);
 			}
 			challenges.add(callable.getChallengeSolutionDTO());
 		}
@@ -110,28 +105,40 @@ public class ChallengeExecutorProcessor {
 			stopwatch.start();
 			String answer;
 			try {
-				answer = (String) method.invoke(abstractChallenge);
+				answer = getAnswer();
 				challengeSolutionDTO.setValue(answer);
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				LOG.error("Error while calling challenge solution", e);
 			}
 			stopwatch.stop();
-			LOG.info("Finishing {}",this);
+			LOG.info("Finishing {}", this);
 			finished = true;
-			challengeSolutionDTO.setRunTime(stopwatch.getLastTaskTimeMillis());
+			challengeSolutionDTO.setRunTime(stopwatch.lastTaskInfo().getTimeMillis());
 		}
 
 		public ChallengeSolutionDTO getChallengeSolutionDTO() {
-			LOG.info("Retrieving results for {}",this);
+			LOG.info("Retrieving results for {}", this);
 			if (!finished) {
 				challengeSolutionDTO.setRunTime(timeout);
 				challengeSolutionDTO.setValue("TIMEOUT");
 			}
 			return challengeSolutionDTO;
 		}
-		
+
 		public String toString() {
-			return "Year: %s Day: %s method: %s".formatted(abstractChallenge.getYear(), abstractChallenge.getDay(), method.getName());
+			return "Year: %s Day: %s method: %s".formatted(abstractChallenge.getYear(), abstractChallenge.getDay(),
+					method.getName());
+		}
+
+		private String getAnswer() throws IllegalAccessException, InvocationTargetException {
+			Object inputValue = method.invoke(abstractChallenge);
+			String returnValue = "";
+			switch (inputValue) {
+			case Integer valueInt -> returnValue = Integer.toString(valueInt);
+			case Long valueLong -> returnValue = Long.toString(valueLong);
+			default -> returnValue = inputValue.toString();
+			}
+			return returnValue;
 		}
 	}
 }
