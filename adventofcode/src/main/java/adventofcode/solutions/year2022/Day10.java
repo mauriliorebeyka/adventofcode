@@ -2,10 +2,10 @@ package adventofcode.solutions.year2022;
 
 import org.junit.Test;
 
+import adventofcode.challenge.AbstractChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
 import adventofcode.solutions.year2022.Day10.Instruction;
-import adventofcode.utils.AbstractChallenge;
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 10)
 public class Day10 extends AbstractChallenge<Instruction> {

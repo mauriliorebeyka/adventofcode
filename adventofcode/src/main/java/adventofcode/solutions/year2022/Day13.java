@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
-import adventofcode.utils.StringChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
+import adventofcode.challenge.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 13)
 public class Day13 extends StringChallenge {

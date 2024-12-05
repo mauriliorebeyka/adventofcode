@@ -1,8 +1,8 @@
 package adventofcode.solutions.year2023;
 
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
-import adventofcode.utils.StringChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
+import adventofcode.challenge.StringChallenge;
 
 @ChallengeDetails(year = 2023, day = 3)
 public class Day3 extends StringChallenge {

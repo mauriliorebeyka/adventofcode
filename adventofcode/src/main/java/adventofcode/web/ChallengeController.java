@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import adventofcode.challenge.AbstractChallenge;
+import adventofcode.challenge.ChallengeExecutorProcessor;
+import adventofcode.challenge.ChallengeFactory;
+import adventofcode.challenge.InputReader;
 import adventofcode.exceptions.InputParseException;
-import adventofcode.utils.AbstractChallenge;
-import adventofcode.utils.InputReader;
-import adventofcode.utils.ChallengeExecutorProcessor;
-import adventofcode.utils.ChallengeFactory;
 import adventofcode.web.dto.ChallengeDTO;
 import adventofcode.web.dto.ChallengeDTO.ChallengeDTOBuilder;
 

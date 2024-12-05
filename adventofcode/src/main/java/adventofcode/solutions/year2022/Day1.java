@@ -14,10 +14,10 @@ import java.util.stream.Collector.Characteristics;
 
 import org.junit.jupiter.api.Test;
 
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
+import adventofcode.challenge.StringChallenge;
 import adventofcode.utils.GroupCollector;
-import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 1)
 public class Day1 extends StringChallenge {

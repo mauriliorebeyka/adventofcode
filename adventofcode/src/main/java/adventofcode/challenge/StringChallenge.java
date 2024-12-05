@@ -1,4 +1,4 @@
-package adventofcode.utils;
+package adventofcode.challenge;
 
 public abstract class StringChallenge extends AbstractChallenge<String> {
 

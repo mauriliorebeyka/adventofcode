@@ -27,6 +27,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import adventofcode.challenge.InputReader;
+import adventofcode.challenge.InputReaderFileFactory;
+import adventofcode.challenge.InputReaderHttpClientFactory;
+import adventofcode.challenge.InputUtilsResponseHandler;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class InputReaderTest {

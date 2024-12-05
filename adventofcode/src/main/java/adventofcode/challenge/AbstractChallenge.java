@@ -1,4 +1,4 @@
-package adventofcode.utils;
+package adventofcode.challenge;
 
 import java.util.List;
 import java.util.stream.Collectors;

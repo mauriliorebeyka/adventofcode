@@ -1,4 +1,4 @@
-package adventofcode.utils;
+package adventofcode.challenge;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -4,9 +4,9 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.stream.Collectors;
 
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
-import adventofcode.utils.StringChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
+import adventofcode.challenge.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 6)
 public class Day6 extends StringChallenge {

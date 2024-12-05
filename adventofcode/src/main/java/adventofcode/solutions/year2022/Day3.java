@@ -7,10 +7,10 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
+import adventofcode.challenge.StringChallenge;
 import adventofcode.utils.GroupCollector;
-import adventofcode.utils.StringChallenge;
 
 @ChallengeDetails(year = 2022, day = 3)
 public class Day3 extends StringChallenge {

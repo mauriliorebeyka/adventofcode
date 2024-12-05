@@ -1,4 +1,4 @@
-package adventofcode.utils;
+package adventofcode.challenge;
 
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.cookie.CookieStore;

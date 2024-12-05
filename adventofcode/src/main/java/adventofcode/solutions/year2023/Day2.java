@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import adventofcode.utils.AbstractChallenge;
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
+import adventofcode.challenge.AbstractChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
 
 @ChallengeDetails(year = 2023, day = 2)
 public class Day2 extends AbstractChallenge<Day2.Game> {

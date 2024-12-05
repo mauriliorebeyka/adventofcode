@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import adventofcode.utils.AbstractChallenge;
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
+import adventofcode.challenge.AbstractChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
 
 @ChallengeDetails(year = 2024, day = 2)
 public class Day2 extends AbstractChallenge<List<Integer>> {

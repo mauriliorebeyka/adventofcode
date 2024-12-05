@@ -6,10 +6,10 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
+import adventofcode.challenge.AbstractChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
 import adventofcode.solutions.year2022.Day4.Section;
-import adventofcode.utils.AbstractChallenge;
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 4)
 public class Day4 extends AbstractChallenge<List<Section>> {

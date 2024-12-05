@@ -6,10 +6,10 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import adventofcode.challenge.AbstractChallenge;
+import adventofcode.challenge.ChallengeDetails;
+import adventofcode.challenge.ChallengeSolution;
 import adventofcode.solutions.year2022.Day9.Instruction;
-import adventofcode.utils.AbstractChallenge;
-import adventofcode.utils.ChallengeDetails;
-import adventofcode.utils.ChallengeSolution;
 
 @ChallengeDetails(year = 2022, day = 9)
 public class Day9 extends AbstractChallenge<Instruction> {
