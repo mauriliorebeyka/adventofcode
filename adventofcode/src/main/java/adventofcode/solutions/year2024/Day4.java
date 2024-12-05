@@ -1,10 +1,13 @@
 package adventofcode.solutions.year2024;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import adventofcode.challenge.ChallengeDetails;
 import adventofcode.challenge.ChallengeSolution;
 import adventofcode.challenge.StringChallenge;
+import adventofcode.utils.Direction;
 import adventofcode.utils.Matrix;
-import adventofcode.utils.Matrix.Direction;
 
 @ChallengeDetails(year = 2024, day = 4)
 public class Day4 extends StringChallenge {
@@ -23,13 +26,13 @@ public class Day4 extends StringChallenge {
 				MAMMMXMMMM
 				MXMXAXMASX
 								""");
-		Matrix matrix = new Matrix(testInput);
+		Matrix<Character> matrix = Matrix.charMatrix(testInput);
 		String foundCharacters = "";
 		int foundWords = 0;
 		for (int y = 0; y < matrix.getHeight(); y++) {
 			for (int x = 0; x < matrix.getWidth(); x++) {
 				if (matrix.getValue(x, y) == 'X') {
-					for (Direction direction : Matrix.Direction.values()) {
+					for (Direction direction : Direction.values()) {
 						foundCharacters = "";
 						matrix.setCoordinates(x, y);
 						do {
@@ -49,21 +52,14 @@ public class Day4 extends StringChallenge {
 
 	@ChallengeSolution
 	public int part1() {
-		Matrix matrix = new Matrix(input);
-		String foundCharacters = "";
+		Matrix<Character> matrix = Matrix.charMatrix(input);
 		int foundWords = 0;
 		for (int y = 0; y < matrix.getHeight(); y++) {
 			for (int x = 0; x < matrix.getWidth(); x++) {
 				if (matrix.getValue(x, y) == 'X') {
-					for (Direction direction : Matrix.Direction.values()) {
-						foundCharacters = "";
-						matrix.setCoordinates(x, y);
-						do {
-							foundCharacters += matrix.getCurrent();
-						} while (matrix.move(direction) && foundCharacters.length() < 4);
-						if (foundCharacters.equals("XMAS")) {
-							System.out.println(
-									"Found XMAS starting at %s,%s, for %s direction".formatted(x, y, direction));
+					for (Direction direction : Direction.values()) {
+						String word = matrix.getRange(x, y, 4, direction).stream().map(c -> c.toString()).collect(Collectors.joining());
+						if (word.equals("XMAS")) {
 							foundWords++;
 						}
 					}
@@ -75,17 +71,15 @@ public class Day4 extends StringChallenge {
 
 	@ChallengeSolution
 	public int part2() {
-		Matrix matrix = new Matrix(input);
+		Matrix<Character> matrix = Matrix.charMatrix(input);
 		int foundWords = 0;
 		for (int y = 0; y < matrix.getHeight(); y++) {
 			for (int x = 0; x < matrix.getWidth(); x++) {
 				if (matrix.getValue(x, y) == 'A') {
-					String diagonal1 = new String(new char[] { matrix.getValue(x - 1, y - 1), matrix.getValue(x, y),
-							matrix.getValue(x + 1, y + 1) });
-					String diagonal2 = new String(new char[] { matrix.getValue(x - 1, y + 1), matrix.getValue(x, y),
-							matrix.getValue(x + 1, y - 1) });
-					if ((diagonal1.equals("SAM") || diagonal1.equals("MAS"))
-							&& ((diagonal2.equals("SAM") || diagonal2.equals("MAS")))) {
+					List<Character> diagonal1 = matrix.getRange(x-1, y-1, 3, Direction.LOWER_RIGHT);
+					List<Character> diagonal2 = matrix.getRange(x-1, y+1, 3, Direction.UPPER_RIGHT);
+					List<Character> SM = List.of('S','M');
+					if (diagonal1.containsAll(SM) && diagonal2.containsAll(SM)) {
 						foundWords++;
 					}
 				}

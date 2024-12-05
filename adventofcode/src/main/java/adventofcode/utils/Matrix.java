@@ -1,42 +1,40 @@
 package adventofcode.utils;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Matrix {
+public class Matrix<T> {
 
-	private char[][] matrix;
+	private T[][] matrix;
 
 	private int x;
 
 	private int y;
 
-	public static enum Direction {
-		UP(0, -1), UPPER_RIGHT(1, -1), RIGHT(1, 0), LOWER_RIGHT(1, 1), DOWN(0, 1), LOWER_LEFT(-1, 1), LEFT(-1, 0),
-		UPPER_LEFT(-1, -1);
-
-		private int deltaX;
-
-		private int deltaY;
-
-		private Direction(int deltaX, int deltaY) {
-			this.deltaX = deltaX;
-			this.deltaY = deltaY;
-		}
-
-		public int getDeltaX() {
-			return deltaX;
-		}
-
-		public int getDeltaY() {
-			return deltaY;
-		}
-	};
-
-	public Matrix(List<String> input) {
-		matrix = new char[input.size()][];
+	public static Matrix<Character> charMatrix(List<String> input) {
+		Character[][] matrix = new Character[input.size()][];
 		for (int i = 0; i < input.size(); i++) {
-			matrix[i] = input.get(i).toCharArray();
+			matrix[i] = new Character[input.get(i).length()];
+			for (int j = 0; j < input.get(i).length(); j++) {
+				matrix[i][j] = input.get(i).charAt(j);
+			}
+		}
+		return new Matrix<Character>(matrix);
+	}
+	
+	public Matrix(T[][] input) {
+		matrix = input;
+		x = 0;
+		y = 0;
+	}
+	
+	public Matrix(List<List<T>> input) {
+		matrix = (T[][]) new Object[input.size()][input.get(0).size()];
+		for (int i = 0; i < input.size(); i++) {
+			for (int j = 0; j < input.get(i).size(); j++) {
+				matrix[i][j] = input.get(i).get(j);
+			}
 		}
 		x = 0;
 		y = 0;
@@ -127,14 +125,40 @@ public class Matrix {
 		return i == amount;
 	}
 
-	public char getValue(int x, int y) {
+	public boolean traverse() {
+		if (move(Direction.RIGHT)) {
+			return true;
+		} else {
+			setX(0);
+			return move(Direction.DOWN);
+		}
+	}
+	
+	public T getValue(int x, int y) {
 		if (valid(x, y)) {
 			return matrix[y][x];
 		}
-		return Character.MIN_VALUE;
+		return null;
 	}
 
-	public char getCurrent() {
+	public List<T> getRange(int x, int y, int size, Direction direction) {
+		List<T> value = new ArrayList<>();
+		int originalX = x;
+		int originalY = y;
+		if (!move(x,y)) {
+			return value;
+		}
+		for (int i=0; i<size; i++) {
+			value.add(getCurrent());
+			if (!move(direction)) {
+				break;
+			}
+		}
+		move(originalX, originalY);
+		return value;
+	}
+	
+	public T getCurrent() {
 		return getValue(x, y);
 	}
 }
